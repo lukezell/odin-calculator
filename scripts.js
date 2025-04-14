@@ -24,19 +24,60 @@ const displayNum = document.querySelector("#displayNum");
 
 let num1 = 0;
 let num2 = 0;
+let operation = "";
+let opCounter = 0;
 
 //displayNum.textContent = `${num1}`;
 
-function setOperands(numInput) {
-    if (num1 === 0) {
-        num1 = numInput;
-    } else {
-        num1 = Number(`${num1}${numInput}`);
-    }
-    displayNum.textContent = `${num1}`;
+function whiteButtons () {
+    divide.style.outlineColor = "#fff";
+    multiply.style.outlineColor = "#fff";
+    minus.style.outlineColor = "#fff";
+    plus.style.outlineColor = "#fff";
 }
 
-clear.addEventListener("click", () => {num1=0; displayNum.textContent = `${num1}`;});
+function setOperands(numInput) {
+    if (opCounter === 0) {
+        if (num1 === 0) {
+            num1 = numInput;
+        } else {
+            num1 = Number(`${num1}${numInput}`);
+        }
+        displayNum.textContent = `${num1}`.substring(0, 15);
+    } else {
+        if (num2 === 0) {
+            num2 = numInput;
+        } else {
+            num2 = Number(`${num2}${numInput}`);
+        }
+        displayNum.textContent = `${num2}`.substring(0, 15);
+    }
+}
+
+function getAnswer() {
+    if (opCounter === 1) {
+        if (operation == "divide") {
+            num1 = num1 / num2;
+        } else if (operation == "multiply") {
+            num1 = num1 * num2;
+        } else if (operation == "add") {
+            num1 = num1 + num2;
+        } else if (operation == "subtract") {
+            num1 = num1 - num2;
+        }
+        num2 = 0;
+        displayNum.textContent = `${num1}`.substring(0, 15);
+    }
+}
+
+clear.addEventListener("click", () => {
+    num1=0;
+    num2=0;
+    operation = "";
+    opCounter = 0;
+    whiteButtons ();
+    displayNum.textContent = `${num1}`.substring(0, 15);
+});
 
 numZero.addEventListener("click", () => {setOperands(0)});
 numOne.addEventListener("click", () => {setOperands(1)});
@@ -48,3 +89,52 @@ numSix.addEventListener("click", () => {setOperands(6)});
 numSeven.addEventListener("click", () => {setOperands(7)});
 numEight.addEventListener("click", () => {setOperands(8)});
 numNine.addEventListener("click", () => {setOperands(9)});
+
+divide.addEventListener("click", () => {
+    if (opCounter === 0) {
+        operation = "divide";
+        divide.style.outlineColor = "#A86200";
+        opCounter = 1;
+    } else {
+        getAnswer();
+        operation = "divide";
+    }
+});
+multiply.addEventListener("click", () => {
+    if (opCounter === 0) {
+        operation = "multiply";
+        multiply.style.outlineColor = "#A86200";
+        opCounter = 1;
+    } else {
+        getAnswer();
+        operation = "multiply";
+    }
+});
+minus.addEventListener("click", () => {
+    if (opCounter === 0) {
+        operation = "subtract";
+        minus.style.outlineColor = "#A86200";
+        opCounter = 1;
+    } else {
+        getAnswer();
+        whiteButtons ();
+        minus.style.outlineColor = "#A86200";
+        operation = "subtract";
+    }
+});
+plus.addEventListener("click", () => {
+    if (opCounter === 0) {
+        operation = "add";
+        plus.style.outlineColor = "#A86200";
+        opCounter = 1;
+    } else {
+        getAnswer();
+        operation = "add";
+    }
+});
+
+equals.addEventListener("click", () => {
+    getAnswer();
+    whiteButtons ();
+    opCounter = 0;
+});
