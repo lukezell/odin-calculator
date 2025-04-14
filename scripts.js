@@ -26,6 +26,7 @@ let num1 = 0;
 let num2 = 0;
 let operation = "";
 let opCounter = 0;
+let resetAns = false;
 
 //displayNum.textContent = `${num1}`;
 
@@ -38,8 +39,9 @@ function whiteButtons () {
 
 function setOperands(numInput) {
     if (opCounter === 0) {
-        if (num1 === 0) {
+        if (num1 === 0 || resetAns) {
             num1 = numInput;
+            resetAns = false;
         } else {
             num1 = Number(`${num1}${numInput}`);
         }
@@ -67,6 +69,7 @@ function getAnswer() {
         }
         num2 = 0;
         displayNum.textContent = `${num1}`.substring(0, 15);
+        resetAns = true;
     }
 }
 
@@ -97,6 +100,8 @@ divide.addEventListener("click", () => {
         opCounter = 1;
     } else {
         getAnswer();
+        whiteButtons ();
+        divide.style.outlineColor = "#75525A";
         operation = "divide";
     }
 });
@@ -107,6 +112,8 @@ multiply.addEventListener("click", () => {
         opCounter = 1;
     } else {
         getAnswer();
+        whiteButtons ();
+        multiply.style.outlineColor = "#75525A";
         operation = "multiply";
     }
 });
@@ -129,6 +136,8 @@ plus.addEventListener("click", () => {
         opCounter = 1;
     } else {
         getAnswer();
+        whiteButtons ();
+        plus.style.outlineColor = "#75525A";
         operation = "add";
     }
 });
