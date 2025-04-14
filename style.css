@@ -4,7 +4,7 @@ body {
     height: auto;
     min-height: 100vh;
     background: #1C1C1C;
-    background: linear-gradient(198deg,rgba(28, 28, 28, 1) 60%, rgba(113, 74, 17, 1) 100%);
+    background: linear-gradient(198deg,rgba(28, 28, 28, 1) 50%, rgba(141, 94, 104, 1) 100%);
 }
 
 #container {
@@ -52,7 +52,7 @@ body {
 }
 
 .box.orange {
-    background-color: #FF9500;
+    background-color: #FFA6B9;
 }
 
 .bottom-row.left {

@@ -93,7 +93,7 @@ numNine.addEventListener("click", () => {setOperands(9)});
 divide.addEventListener("click", () => {
     if (opCounter === 0) {
         operation = "divide";
-        divide.style.outlineColor = "#A86200";
+        divide.style.outlineColor = "#75525A";
         opCounter = 1;
     } else {
         getAnswer();
@@ -103,7 +103,7 @@ divide.addEventListener("click", () => {
 multiply.addEventListener("click", () => {
     if (opCounter === 0) {
         operation = "multiply";
-        multiply.style.outlineColor = "#A86200";
+        multiply.style.outlineColor = "#75525A";
         opCounter = 1;
     } else {
         getAnswer();
@@ -113,19 +113,19 @@ multiply.addEventListener("click", () => {
 minus.addEventListener("click", () => {
     if (opCounter === 0) {
         operation = "subtract";
-        minus.style.outlineColor = "#A86200";
+        minus.style.outlineColor = "#75525A";
         opCounter = 1;
     } else {
         getAnswer();
         whiteButtons ();
-        minus.style.outlineColor = "#A86200";
+        minus.style.outlineColor = "#75525A";
         operation = "subtract";
     }
 });
 plus.addEventListener("click", () => {
     if (opCounter === 0) {
         operation = "add";
-        plus.style.outlineColor = "#A86200";
+        plus.style.outlineColor = "#75525A";
         opCounter = 1;
     } else {
         getAnswer();
